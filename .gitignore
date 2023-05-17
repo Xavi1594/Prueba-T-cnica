@@ -1,20 +1,17 @@
 # Directorios
 node_modules/
 /dist/
+/.vite/
+/.vscode/
 
 # Archivos de configuración
 .env.local
 .env.development.local
-.env.test.local
 .env.production.local
 
 # Archivos generados en tiempo de compilación
 /dist/
-/.sass-cache/
-/*.log
-/npm-debug.log*
-/yarn-debug.log*
-/yarn-error.log*
+/.vite/
 
 # IDE / Editor
 /.idea/
@@ -34,24 +31,14 @@ node_modules/
 # Archivos de pruebas
 /.nyc_output/
 /coverage/
-/.babelrc
-/.jest/
-/testcafe.config.js
 /tests/
 
 # Misceláneos
 .DS_Store
 .env.local
 .env.development.local
-.env.test.local
 .env.production.local
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Vue CLI
-/dist
-/node_modules
-/vue.config.js
-/package-lock.json
