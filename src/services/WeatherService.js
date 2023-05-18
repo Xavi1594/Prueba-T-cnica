@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const fetchWeatherData = async (ciudad, pais) => {
+export const fetchWeatherData = async (city, country) => {
   const appId = 'fac12ba0ddebf686db88fb1b1cca327f';
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`;
 
   try {
     const response = await axios.get(url);
