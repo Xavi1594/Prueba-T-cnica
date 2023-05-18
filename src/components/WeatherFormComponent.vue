@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-import { useWeatherStore } from '../../stores/weather';
-import { fetchWeatherData } from '../../services/WeatherService';
+import { useWeatherStore } from '../stores/WheatherStore';
+import { fetchWeatherData } from '../services/WeatherService';
 
 const ciudad = ref('');
 const pais = ref('');
