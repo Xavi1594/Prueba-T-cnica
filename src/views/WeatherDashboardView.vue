@@ -1,5 +1,8 @@
 <script setup>
 import WeatherFormComponent from '../components/WeatherFormComponent.vue';
+import FooterComponent from '../components/FooterComponent.vue';
+import WeatherDisplayComponent from '../components/WheaterDisplayComponent.vue';
+
 
 
 
@@ -7,6 +10,8 @@ import WeatherFormComponent from '../components/WeatherFormComponent.vue';
 <template>
   <div class="view-container">
     <WeatherFormComponent />
+    <WeatherDisplayComponent />
+    <FooterComponent />
   
   </div>
 </template>
