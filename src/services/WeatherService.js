@@ -6,6 +6,7 @@ export const fetchWeatherData = async (city, country) => {
 
   try {
     const response = await axios.get(url);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     if (error.response.status === 404) {

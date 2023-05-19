@@ -1,13 +1,13 @@
 <script setup>
 import WeatherFormComponent from '../components/WeatherFormComponent.vue';
-import WheaterDisplayComponent from '../components/WheaterDisplayComponent.vue';
+
 
 
 </script>
 <template>
   <div class="view-container">
     <WeatherFormComponent />
-    <WheaterDisplayComponent />
+  
   </div>
 </template>
 
@@ -18,7 +18,8 @@ import WheaterDisplayComponent from '../components/WheaterDisplayComponent.vue';
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f8ff;
+  background: linear-gradient(135deg, #3498db, #f1c40f);
+  background-size: cover;
   font-family: Arial, sans-serif;
   padding: 2rem;
   box-sizing: border-box;
