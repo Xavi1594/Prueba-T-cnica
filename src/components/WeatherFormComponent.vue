@@ -1,82 +1,113 @@
-<template>
-  <div>
-    <h1>El tiempo en tú ciudad</h1>
-    
-    <form class="weather-form" @submit.prevent="searchWeather">
-      <div class="mb-3">
-        <input type="text" class="form-control" v-model="city" placeholder="Escribe la ciudad">
-      </div>
-      <div class="mb-3">
-        <select class="form-select" v-model="country">
-          <option value="">Selecciona un país</option>
-          <option value="ES">España</option>
-          <option value="FR">Francia</option>
-          <option value="AR">Argentina</option>
-          <option value="CN">China</option>
-          <option value="MX">México</option>
-          <option value="CA">Canadá</option>
-          <option value="GB">Reino Unido</option>
-          <option value="IN">India</option>
-          <option value="IT">Italia</option>
-        </select>
-      </div>
-      <button class="btn" type="submit">Obtener clima</button>
-    </form>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue';
 import { useWeatherStore } from '../stores/WeatherStore';
 import { fetchWeatherData } from '../services/WeatherService';
 
 const city = ref('');
+const cityInput = ref('');
 const country = ref('');
+const errorMessage = ref('');
 const store = useWeatherStore();
 
 const searchWeather = async () => {
-  if (city.value === '' || country.value === '') {
-    console.log('Ambos campos son obligatorios');
+  if (cityInput.value === '' || country.value === '') {
+    alert('Ambos campos son obligatorios');
     return;
   }
-
+ 
   try {
-    const weatherData = await fetchWeatherData(city.value, country.value);
+    const weatherData = await fetchWeatherData(cityInput.value, country.value);
     store.updateWeatherData(weatherData);
+    emit('searchWeather', cityInput.value, country.value);
+  
   } catch (error) {
     console.error(error);
   }
 };
 </script>
 
+
+<template>
+  <div class="container">
+    <form class="weather-form" @submit.prevent="searchWeather">
+      <input
+        type="text"
+        class="form-control "
+        :value="cityInput"
+        @input="cityInput = $event.target.value"
+        placeholder="Ciudad"
+      />
+
+      <select class="form-select form-select-lg mb-3 mt-3" v-model="country">
+        <option value="">País</option>
+        <option value="ES">España</option>
+        <option value="FR">Francia</option>
+        <option value="AR">Argentina</option>
+        <option value="CN">China</option>
+        <option value="MX">México</option>
+        <option value="CA">Canadá</option>
+        <option value="GB">Reino Unido</option>
+        <option value="IN">India</option>
+        <option value="IT">Italia</option>
+      </select>
+
+      <button class="btn mt-2" type="submit">Obtener clima</button>
+      <p class="error-message" v-if="errorMessage">{{ errorMessage }}</p>
+    </form>
+  </div>
+</template>
+
 <style scoped>
-h1 {
-  color: #06283D;
-  width: 80%;
-  font-size: 24px;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding-left: 32px;
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  border-radius: 10px;
 }
 
 .weather-form {
-  color: #06283D;
-  width: 80%;
-  font-size: 18px;
-  font-weight: 500;
+  color: #06283d;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 5px;
+  align-items: center;
+  width: 60%;
 }
 
 select,
-input::placeholder {
-  font-size: 18px;
-  font-weight: 500;
-  color: #06283D;
+input {
+ width: 100%;
+
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  border-radius: 16px 0px 16px 0px;
+  border-bottom: 3px solid #DF8E00;
+  text-transform: capitalize;
+  
+  color: #313131;
+  font-size: 22px;
+  font-weight: 300;
+  transition: 0.2s ease-out;
 }
+
+/* select,
+input::placeholder {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #06283d;
+} */
 
 .btn {
   cursor: pointer;
   color: #fff;
-  background: #26bc38;
+  background: #ded718;
   width: 100%;
 }
 
@@ -84,5 +115,10 @@ input::placeholder {
   color: #fff;
   background: green;
   letter-spacing: 1px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1em;
 }
 </style>
