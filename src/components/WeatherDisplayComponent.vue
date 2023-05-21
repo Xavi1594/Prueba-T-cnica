@@ -73,13 +73,14 @@ const searchWeather = async () => {
 </script>
 
 <template>
-  <div class="weather-display" v-if="weatherData && weatherData.main" :style="{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
+  <div class="weather-display" v-if="weatherData && weatherData.main"
+    :style="{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
     <p class="weather-place">Clima en <span>{{ weatherData.name }}</span></p>
     <p class="temperature-actual">{{ temperatureCelsius(weatherData.main.temp) }} &#8451;</p>
     <p class="temperature-max">Max: {{ temperatureCelsius(weatherData.main.temp_max) }} &#8451;</p>
     <p class="temperature-min">Min: {{ temperatureCelsius(weatherData.main.temp_min) }} &#8451;</p>
 
-   
+
   </div>
 </template>
 
@@ -116,11 +117,11 @@ span {
   color: #FFF;
   font-size: 102px;
   font-weight: 900;
-  text-shadow: 3px 6px rgba(0,0,0,0.25);
+  text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 16px;
   margin: 30px 0px;
-  box-shadow: 3px 6px rgba(0,0,0,0.25);
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
 

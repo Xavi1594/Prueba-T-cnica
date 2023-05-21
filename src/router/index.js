@@ -9,7 +9,8 @@ const router = createRouter({
       path: '/',
       name: 'dashboard',
       component: () => import ('../views/WeatherDashboardView.vue'),
-    }
+    },
+    
     
   ]
 })

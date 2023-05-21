@@ -14,12 +14,12 @@ const searchWeather = async () => {
     alert('Ambos campos son obligatorios');
     return;
   }
- 
+
   try {
     const weatherData = await fetchWeatherData(cityInput.value, country.value);
     store.updateWeatherData(weatherData);
     emit('searchWeather', cityInput.value, country.value);
-  
+
   } catch (error) {
     console.error(error);
   }
@@ -29,14 +29,10 @@ const searchWeather = async () => {
 
 <template>
   <div class="container">
+
     <form class="weather-form" @submit.prevent="searchWeather">
-      <input
-        type="text"
-        class="form-control "
-        :value="cityInput"
-        @input="cityInput = $event.target.value"
-        placeholder="Ciudad"
-      />
+      <input type="text" class="form-control " :value="cityInput" @input="cityInput = $event.target.value"
+        placeholder="Ciudad" />
 
       <select class="form-select form-select-lg mb-3 mt-3" v-model="country">
         <option value="">País</option>
@@ -81,7 +77,7 @@ const searchWeather = async () => {
 
 select,
 input {
- width: 100%;
+  width: 100%;
 
   padding: 10px 15px;
   border: none;
@@ -90,31 +86,25 @@ input {
   border-radius: 16px 0px 16px 0px;
   border-bottom: 3px solid #DF8E00;
   text-transform: capitalize;
-  
+
   color: #313131;
   font-size: 22px;
   font-weight: 300;
   transition: 0.2s ease-out;
 }
 
-/* select,
-input::placeholder {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #06283d;
-} */
-
 .btn {
   cursor: pointer;
   color: #fff;
-  background: #ded718;
+  background: linear-gradient(rgb(234, 159, 20), rgba(234, 159, 20, 0.8));
   width: 100%;
 }
 
 .btn:hover {
   color: #fff;
   background: green;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  border-radius: 5px;
 }
 
 .error-message {
