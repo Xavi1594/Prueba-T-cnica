@@ -1,4 +1,6 @@
 # UPinteligence
+### Deploy del proyecto finalizado 
+https://pruebauptinteligence.netlify.app/
 ## Contexto del proyecto
 ### Ejercicio 1:
 - Desarrollar un dashboard donde se puedan visualizar datos obtenidos a través de una API pública. Utilizar framework de JavaScript Vue.js
