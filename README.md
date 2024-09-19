@@ -1,4 +1,4 @@
-# UPinteligence
+
 ### Deploy del proyecto finalizado 
 https://pruebauptinteligence.netlify.app/
 ## Contexto del proyecto
